@@ -332,7 +332,7 @@
         <div class="eyebrow">Selected work</div>
         <h2>Featured pieces</h2>
       </div>
-      <div class="note">One sample live, more in production. Portfolio updates weekly.</div>
+      <div class="note">Two samples live, more in production. Portfolio updates weekly.</div>
     </div>
     <div class="work-grid">
 
@@ -353,18 +353,20 @@
         </div>
       </div>
 
-      <div class="card placeholder">
+      <div class="card">
         <div class="swatch-top"></div>
-        <div class="thumb">
-          <div class="play">
+        <div class="thumb video-thumb" id="sample02-wrap">
+          <video id="sample02" playsinline preload="metadata" poster="skincare-sample-02-poster.jpg">
+            <source src="skincare-sample-02.mp4" type="video/mp4">
+          </video>
+          <button class="play" id="sample02-play" aria-label="Play sample video">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <span>In production</span>
+          </button>
         </div>
         <div class="meta">
           <div class="tag">Skincare</div>
-          <h3>Morning routine walkthrough</h3>
-          <p>Coming soon.</p>
+          <h3>Evening routine, honest take</h3>
+          <p>AI-generated nighttime routine story, vertical format.</p>
         </div>
       </div>
 
@@ -461,10 +463,10 @@
 </footer>
 
 <script>
-  (function(){
-    var wrap = document.getElementById('sample01-wrap');
-    var vid = document.getElementById('sample01');
-    var btn = document.getElementById('sample01-play');
+  function wireVideoCard(id){
+    var wrap = document.getElementById(id + '-wrap');
+    var vid = document.getElementById(id);
+    var btn = document.getElementById(id + '-play');
     if(!wrap || !vid || !btn) return;
     btn.addEventListener('click', function(){
       vid.controls = true;
@@ -474,7 +476,9 @@
     vid.addEventListener('pause', function(){
       if(vid.currentTime === 0) wrap.classList.remove('is-playing');
     });
-  })();
+  }
+  wireVideoCard('sample01');
+  wireVideoCard('sample02');
 </script>
 </body>
 </html>
