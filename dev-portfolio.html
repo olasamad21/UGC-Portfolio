@@ -157,12 +157,29 @@
     html{ scroll-behavior:auto; }
     .cursor{ animation:none; }
   }
+
+  /* Global Responsive Overrides */
+  html, body { overflow-x: hidden; }
+  * { overflow-wrap: break-word; }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    .editor { padding: 24px 16px; }
+    .editor h1 { font-size: 24px; word-break: break-all; }
+    .file-head { flex-wrap: wrap; gap: 8px; padding: 16px; }
+    .file-stack { margin-left: 0; width: 100%; text-align: left; margin-top: 4px; }
+    .file-body { padding: 0 16px 20px 16px; }
+    .terminal { padding: 16px; }
+    .stat-row { flex-wrap: wrap; gap: 4px; }
+    .sec-head { flex-wrap: wrap; }
+    .bottom-line { flex-direction: column; gap: 12px; align-items: center; text-align: center; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="tabbar wrap" style="padding:0;">
+    <a class="tab" href="index.html">↩ hub</a>
     <a class="tab active" href="#about">about.md</a>
     <a class="tab" href="#projects">projects/</a>
     <a class="tab" href="#skills">skills.json</a>
@@ -179,15 +196,15 @@
       </div>
       <div class="editor">
         <div class="label" style="margin-bottom:10px;">Software Engineering Student · Lead City University</div>
-        <h1><span class="kw">const</span> engineer = <span class="str" style="font-family:var(--sans); font-weight:700;">"Abdulsamad Ajayi"</span><span class="cursor"></span></h1>
-        <p class="role-line">Final-year Software Engineering student building practical, working software: desktop apps, data dashboards, and cloud-connected tools, in <span class="str">Python</span>, <span class="str">JavaScript</span>, <span class="str">Dart</span>, and <span class="str">Firebase</span>. Six months in production systems at NITDA.</p>
+        <h1>engineer = <span class="str" style="font-family:var(--sans); font-weight:700;">"Abdulsamad Ajayi"</span><span class="cursor"></span></h1>
+        <p class="role-line">Final-year Software Engineering student building practical, working software: desktop apps, data dashboards, and cloud-connected tools, in <span class="str">Python</span>, <span class="str">Frontend</span>, <span class="str">Dart</span>, and <span class="str">Firebase</span>. Six months in production systems at NITDA.</p>
         <div class="tags">
           <span class="tag-pill">Python</span>
-          <span class="tag-pill">JavaScript</span>
+          <span class="tag-pill">Frontend</span>
           <span class="tag-pill">Flutter / Dart</span>
           <span class="tag-pill">Firebase</span>
           <span class="tag-pill">Streamlit</span>
-          <span class="tag-pill">Machine Learning</span>
+          <span class="tag-pill">Applied AI/ML Tools</span>
           <span class="tag-pill">Git / GitHub</span>
         </div>
       </div>
@@ -202,6 +219,8 @@
       <div>
         <p>I build software that solves problems I've actually run into: exam integrity tools, personal finance tracking, campus navigation. My focus is on shipping things that work end-to-end, not just prototypes.</p>
         <p>Completed a six-month SIWES internship at the National Information Technology Development Agency (NITDA), working across Python development, applied data science, and interface design. Currently finishing my final-year project and looking for internship-level engineering work.</p>
+        <p>I also run Becoming a Dev, teaching the AI-assisted process I use to turn ideas into working software.</p>
+        <p style="margin-top:22px; padding:14px 18px; border:1px solid var(--blue-soft); background:var(--panel); border-radius:var(--radius); font-size:14.5px;"><strong>AI-assisted workflow:</strong> I use tools like ChatGPT, Claude, and Cursor/Windsurf throughout research, planning, and implementation to build faster and more thoroughly.</p>
       </div>
       <div class="stat-block">
         <div class="stat-row"><span class="k">location</span><span class="v">Abuja, Nigeria</span></div>
@@ -216,14 +235,31 @@
 
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head"><span class="label">02 · projects</span><span class="count">5 total</span><div class="rule"></div></div>
+    <div class="sec-head"><span class="label">02 · projects</span><span class="count">6 total</span><div class="rule"></div></div>
     <div class="filelist">
+
+      <div class="file">
+        <div class="file-head">
+          <span class="ext">.ts</span>
+          <span class="file-name">eduverify/</span>
+          <span class="status-tag">shipped</span>
+          <span class="file-stack">Frontend · FastAPI · Firebase</span>
+        </div>
+        <div class="file-body">
+          <p>A full-stack smart attendance system that verifies students are actually present, not just that they tapped a button. Requires two independent checks before marking anyone present: facial recognition with liveness detection (Facenet512 + MTCNN via DeepFace) to confirm identity, and GPS verification (Haversine distance calculation) to confirm physical presence in the classroom.</p>
+          <ul>
+            <li>Built full-stack: frontend deployed on Vercel, FastAPI + Python backend running the ML pipeline deployed on Railway, Firebase (Firestore + Auth) for data and authentication</li>
+            <li>Designed and built solo using an AI-assisted development workflow — from research and planning through implementation and deployment</li>
+            <li>Live: <a href="http://smart-attendance-web-murex.vercel.app/" target="_blank" rel="noopener" style="text-decoration:underline;">smart-attendance-web-murex.vercel.app</a></li>
+          </ul>
+        </div>
+      </div>
 
       <div class="file">
         <div class="file-head">
           <span class="ext">.py</span>
           <span class="file-name">exam-guard/</span>
-          <span class="status-tag">shipped</span>
+          <span class="status-tag">completed</span>
           <span class="file-stack">Python · Tkinter</span>
         </div>
         <div class="file-body">
@@ -239,7 +275,7 @@
         <div class="file-head">
           <span class="ext">.py</span>
           <span class="file-name">finance-dashboard/</span>
-          <span class="status-tag">shipped</span>
+          <span class="status-tag">completed</span>
           <span class="file-stack">Python · Streamlit</span>
         </div>
         <div class="file-body">
@@ -254,7 +290,7 @@
         <div class="file-head">
           <span class="ext">.dart</span>
           <span class="file-name">campus-nav/</span>
-          <span class="status-tag">shipped</span>
+          <span class="status-tag">completed</span>
           <span class="file-stack">Flutter · Dart</span>
         </div>
         <div class="file-body">
@@ -285,7 +321,7 @@
         <div class="file-head">
           <span class="ext wip">.fig</span>
           <span class="file-name">routify/</span>
-          <span class="status-tag">shipped</span>
+          <span class="status-tag">completed</span>
           <span class="file-stack">Team project · Figma</span>
         </div>
         <div class="file-body">
@@ -306,11 +342,11 @@
     <div class="skill-groups">
       <div class="skill-cell">
         <span class="label">Languages</span>
-        <div class="items">Python<br>JavaScript<br>Dart<br>HTML5 / CSS3</div>
+        <div class="items">Python<br>Frontend<br>Dart<br>HTML5 / CSS3</div>
       </div>
       <div class="skill-cell">
         <span class="label">Data &amp; ML</span>
-        <div class="items">Data analysis<br>Data visualization<br>ML (beginner intermediate)</div>
+        <div class="items">Data analysis<br>Data visualization<br>Applied AI/ML Tools</div>
       </div>
       <div class="skill-cell">
         <span class="label">Frameworks</span>
@@ -347,7 +383,7 @@
   </div>
   <div class="wrap bottom-line">
     <span>© Abdulsamad Ajayi</span>
-    <span>Portfolio for internship &amp; engineering applications</span>
+    <span>Also see: <a href="ugc-portfolio.html" style="text-decoration:underline;">UGC / AI content</a> · <a href="uiux-portfolio.html" style="text-decoration:underline;">UI/UX design</a></span>
   </div>
 </footer>
 
